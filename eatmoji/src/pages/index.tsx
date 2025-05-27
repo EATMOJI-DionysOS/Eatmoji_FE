@@ -5,9 +5,9 @@ export default function Home() {
     <>
       <Head>
         <title>Eatmoji😆</title>
-        <meta property="title" content="Eatmoji" />
-        <meta property="description" content="이모지 기반 감성 메뉴 추천 서비스" />
-        <meta property="image" content="/favicon_logo.png" />
+        <meta property="og:title" content="Eatmoji" />
+        <meta property="og:description" content="이모지 기반 감성 메뉴 추천 서비스" />
+        <meta property="og:image" content="/favicon_logo.png" />
       </Head>
       <div>
         <h1>Index Page</h1>
