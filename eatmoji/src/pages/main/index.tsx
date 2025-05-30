@@ -46,7 +46,7 @@ export default function Main() {
       case 1:
         return <Step1 nextStep={nextStep} setAnswer1={setAnswer1} />;
       case 2:
-        return <Step2 nextStep={nextStep} goToStep={goToStep} answer1={answer1} setAnswer2={setAnswer2} />;
+        return <Step2 answer1={answer1} nextStep={nextStep} goToStep={goToStep} setAnswer2={setAnswer2} />;
       case 3:
         return <Step3 answer2={answer2} generateResult={handleGenerateResult} />;
       case 4:
