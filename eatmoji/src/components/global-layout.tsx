@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import style from './global-layout.module.css'
-import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 export default function Layout({ children } : { children: ReactNode }) {
-  const pathname = usePathname();
+  const { pathname } = useRouter();
 
   return (
     <div className={style.container}>
