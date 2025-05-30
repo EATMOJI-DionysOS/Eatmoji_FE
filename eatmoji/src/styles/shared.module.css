@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   width: 411px;
-  height: 847px;
+  min-height: 100vh;
   padding-top: 30px;
   padding-left: 65px;
   padding-right: 65px;
