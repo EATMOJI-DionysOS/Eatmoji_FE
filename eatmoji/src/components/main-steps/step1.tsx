@@ -16,7 +16,7 @@ export default function Step1({nextStep, setAnswer1} : {nextStep: () => void, se
         <meta property="og:image" content="/favicon_logo.png" />
       </Head>
       <div className={`${sharedStyle.sharedContainer} gap-[103px]`}>
-        <h1 className="text-2xl font-bold text-gray-800">오늘 하루, 어땠어?</h1>
+        <h1 className="text-2xl font-bold text-gray-800  text-center w-[250px]">오늘 하루, 어땠어?</h1>
         <div className="flex flex-col items-center gap-[20px]">
             {["기쁨", "슬픔", "화남", "편안", "아픔"].map((emotion) => (
             <button
