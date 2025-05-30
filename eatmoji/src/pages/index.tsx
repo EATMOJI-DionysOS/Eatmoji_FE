@@ -12,7 +12,7 @@ export default function Home() {
         <meta property="og:description" content="이모지 기반 감성 메뉴 추천 서비스" />
         <meta property="og:image" content="/favicon_logo.png" />
       </Head>
-      <div className="flex flex-col justify-center items-center gap-[39px] w-[411px] h-[823px] pt-[100px] px-[65px] flex-shrink-0 bg-[#FFFFFF]">
+      <div className="flex flex-col justify-center items-center gap-[39px] w-[411px] h-[847px] pt-[100px] px-[65px] flex-shrink-0 bg-[#FFFFFF]">
         <img className="w-[280px] h-[225px] shrink-0" src="/favicon_logo.png" alt="Logo" />
         <button
           type="button"
