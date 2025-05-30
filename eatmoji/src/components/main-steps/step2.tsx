@@ -36,7 +36,7 @@ export default function Step2({answer1, nextStep, goToStep, setAnswer2} : {answe
       </Head>
       <div className={`${sharedStyle.sharedContainer} relative gap-[33px]`}>
         <button
-          className="absolute top-[60px] left-[40px] w-[90px] h-[30px] text-gray-800 font-inter text-sm font-medium rounded-xl bg-[#f5eee0] hover:bg-[#e8dfcf] transition-all duration-200 shadow-[0_1px_4px_rgba(0,0,0,0.1)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.15)] focus:outline-none focus:ring-2 focus:ring-[#d1c8b0]"
+          className="absolute top-[50px] left-[40px] w-[90px] h-[30px] text-gray-800 font-inter text-sm font-medium rounded-xl bg-[#f5eee0] hover:bg-[#e8dfcf] transition-all duration-200 shadow-[0_1px_4px_rgba(0,0,0,0.1)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.15)] focus:outline-none focus:ring-2 focus:ring-[#d1c8b0]"
           onClick={() => goToStep(1)}
         >
           이전으로
