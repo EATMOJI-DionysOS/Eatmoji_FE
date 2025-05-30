@@ -1,8 +1,20 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import style from "./index.module.css";
+import sharedStyle from "@/styles/shared.module.css";
 
 export default function Home() {
   const router = useRouter();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
   
   return (
     <>
@@ -12,22 +24,30 @@ export default function Home() {
         <meta property="og:description" content="이모지 기반 감성 메뉴 추천 서비스" />
         <meta property="og:image" content="/favicon_logo.png" />
       </Head>
-      <div className="flex flex-col justify-center items-center gap-[39px] w-[411px] h-[847px] pt-[100px] px-[65px] flex-shrink-0 bg-[#FFFFFF]">
-        <img className="w-[280px] h-[225px] shrink-0" src="/favicon_logo.png" alt="Logo" />
+      <div className={`${sharedStyle.sharedContainer} ${style.container}`}>
+        <img 
+          className={style.logo} 
+          style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "scale(1)" : "scale(0.9)",
+          }} 
+          src="/favicon_logo.png" 
+          alt="Logo" 
+        />
         <button
           type="button"
-          className="flex flex-col justify-center items-center w-[249px] h-[95px] py-[10px] rounded-[30px] bg-[#D8ED8F]"
+          className={style.buttonStart}
           onClick={() => router.push('/main')}
         >
-          <p className="text-black text-center font-inter text-[18px] font-normal leading-none">로그인없이</p>
-          <div className="text-black text-center font-inter text-[44px] font-normal leading-none">시작하기</div>  
+          <p className="text-black text-center font-inter text-[16px] font-medium tracking-wide leading-none">로그인없이</p>
+          <div className="text-black text-center font-inter text-[40px] font-semibold tracking-tight leading-none">시작하기</div>  
         </button>
         <button
           type="button"
-          className="flex flex-col justify-center items-center w-[126px] h-[22px] py-[10px]"
+          className={style.buttonLogin}
           onClick={() => router.push('/login')}
         >
-          <p className="text-black text-center font-inter text-[18px] font-normal leading-none underline">로그인/회원가입</p>
+          <p>로그인 / 회원가입</p>
         </button>
       </div>
     </>
