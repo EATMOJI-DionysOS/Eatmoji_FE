@@ -10,6 +10,7 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
     return (
       <div className={`${sharedStyle.sharedContainer} ${style.loadingContainer}`}>
         <div className={style.loader}></div>
+        <p className={style.description}>추천 결과를 생성 중입니다... 🍽️</p>
       </div>
     );
   }
