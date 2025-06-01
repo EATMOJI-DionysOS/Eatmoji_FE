@@ -85,6 +85,13 @@
   width: 270px;
 }
 
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
 .menulinkButton {
   margin-top: 20px;
   padding: 12px 24px;
