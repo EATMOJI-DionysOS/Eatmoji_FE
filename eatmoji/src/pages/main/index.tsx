@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Head from "next/head";
 import Step1 from "@/components/main-steps/step1";
 import Step2 from "@/components/main-steps/step2";
 import Step3 from "@/components/main-steps/step3";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import sharedStyle from "@/styles/shared.module.css";
 
 export default function Main() {
@@ -14,29 +15,38 @@ export default function Main() {
   const nextStep = () => setStep((prev) => prev + 1);
   const goToStep = (stepNumber: number) => setStep(stepNumber);
 
-  const handleGenerateResult = async () => {
+  useEffect(() => {
+    console.log("result changed:", result);
+  }, [result]);
+
+  const handleGenerateResult = async (selectedAnswer2: string) => {
     setStep(3);
+    console.log("선택된 이모지:", selectedAnswer2);
 
     try {
-      const response = await fetch("/api/recommend", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ answer2 }),
-      });
+      // const response = await fetch("/api/recommend", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ answer2 }),
+      // });
 
-      if (!response.ok) {
-        throw new Error("결과를 생성하는 데 실패했습니다.");
-      }
+      // if (!response.ok) {
+      //   throw new Error("결과를 생성하는 데 실패했습니다.");
+      // }
 
-      const data = await response.json();
-      setResult(data.result);
-      setStep(4);
+      // const data = await response.json();
+      // setResult(data.result);
+
+      // 로컬 더미 결과 (answer2 값 포함하여 출력 예시)
+      const dummyResult = `로컬 테스트 결과: 선택한 이모지는 ${selectedAnswer2} 입니다! 맛있는 메뉴 추천이 곧 나옵니다.`;
+      // 실제 네트워크 호출 대신 1초 딜레이 후 결과 설정
+      await new Promise((res) => setTimeout(res, 1000));
+      setResult(dummyResult);
     } catch (error) {
       console.error("GPT 호출 실패:", error);
       setResult("오류가 발생했어요. 다시 시도해 주세요.");
-      setStep(4);
     }
   };
 
