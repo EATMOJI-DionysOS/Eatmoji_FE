@@ -2,13 +2,14 @@ import Head from "next/head";
 import sharedStyle from "@/styles/shared.module.css";
 import style from "./step2.module.css";
 
-export default function Step2({answer1, nextStep, goToStep, setAnswer2} : {answer1: string, nextStep: () => void, goToStep: (stepNumber: number) => void, setAnswer2: (answer: string) => void}) {
-  const handleClick = (answer: string) => {
+export default function Step2({answer1, nextStep, goToStep, setAnswer2, generateResult} : {answer1: string, nextStep: () => void, goToStep: (stepNumber: number) => void, setAnswer2: (answer: string) => void , generateResult: () => void}) {
+  const handleClick = async (answer: string) => {
     setAnswer2(answer);
+    await generateResult();
     nextStep();
   }
 
-  const getEmotionByAnser1 = (answer1: string): string[] => {
+  const getEmotionByAnswer1 = (answer1: string): string[] => {
     switch (answer1) {
       case "기쁨":
         return ["😀", "😆", "🤣", "😊", "😍", "🙂"];
@@ -25,7 +26,7 @@ export default function Step2({answer1, nextStep, goToStep, setAnswer2} : {answe
     }
   };
 
-  const emojiList = getEmotionByAnser1(answer1);
+  const emojiList = getEmotionByAnswer1(answer1);
   
   return (
     <>
