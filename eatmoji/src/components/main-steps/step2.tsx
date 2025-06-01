@@ -2,11 +2,10 @@ import Head from "next/head";
 import sharedStyle from "@/styles/shared.module.css";
 import style from "./step2.module.css";
 
-export default function Step2({answer1, nextStep, goToStep, setAnswer2, generateResult} : {answer1: string, nextStep: () => void, goToStep: (stepNumber: number) => void, setAnswer2: (answer: string) => void , generateResult: (emoji: string) => void}) {
+export default function Step2({answer1, goToStep, setAnswer2, generateResult} : {answer1: string, goToStep: (stepNumber: number) => void, setAnswer2: (answer: string) => void , generateResult: (emoji: string) => void}) {
   const handleClick = async (emoji: string) => {
     setAnswer2(emoji);
     await generateResult(emoji);
-    nextStep();
   }
 
   const getEmotionByAnswer1 = (answer1: string): string[] => {
