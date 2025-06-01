@@ -2,7 +2,6 @@ import Head from "next/head";
 import Step1 from "@/components/main-steps/step1";
 import Step2 from "@/components/main-steps/step2";
 import Step3 from "@/components/main-steps/step3";
-import Loading from "@/components/main-steps/loading";
 import { useState } from "react";
 import sharedStyle from "@/styles/shared.module.css";
 
@@ -46,11 +45,9 @@ export default function Main() {
       case 1:
         return <Step1 nextStep={nextStep} setAnswer1={setAnswer1} />;
       case 2:
-        return <Step2 answer1={answer1} nextStep={nextStep} goToStep={goToStep} setAnswer2={setAnswer2} />;
+        return <Step2 answer1={answer1} nextStep={nextStep} goToStep={goToStep} setAnswer2={setAnswer2} generateResult={handleGenerateResult} />;
       case 3:
-        return <Step3 answer2={answer2} generateResult={handleGenerateResult} goToStep={goToStep}/>;
-      case 4:
-        return <Loading result={result} goToStep={goToStep} />;
+        return <Step3 result={result} goToStep={goToStep}/>;
       default:
         return null;
     }
