@@ -95,7 +95,7 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
                 </label>
                 <div className={style.modalButtons}>
                   <button className={`${style.modalButton} ${style.cancel}`} onClick={closeModal}>닫기</button>
-                  <button className={style.modalButton} onClick={goToEat}>보러가기</button>
+                  <button className={style.modalButton} onClick={goToEat}>식당 보러가기</button>
                 </div>
               </div>
             </div>
