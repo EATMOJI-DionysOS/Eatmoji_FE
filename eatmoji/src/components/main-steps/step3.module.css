@@ -79,11 +79,40 @@
 }
 
 .description {
-  font-size: 0.875rem; /* text-sm */
+  font-size: 16px;
   font-weight: 500;
   color: #232323;
   text-align: center;
   width: 270px;
+}
+
+.favoriteButton {
+  position: absolute;
+  top: 50px;
+  right: 40px;
+  width: 90px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5eee0;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500;
+  cursor: pointer;
+  color: #232323;
+  margin-left: 0.5rem;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+.favoriteButton:hover {
+  transform: scale(1.2);
+  color: #ff9500;
 }
 
 .buttonContainer {
