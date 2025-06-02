@@ -4,11 +4,13 @@ import sharedStyle from "@/styles/shared.module.css";
 import style from "./step3.module.css";
 import { useState } from "react";
 import { addressOptions, districts } from "@/dummy/dummyRegion";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 export default function Step3({result, goToStep} : {result: string | null, goToStep: (stepNumber: number) => void}) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -24,6 +26,17 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
     const url = `https://map.kakao.com/?=${encodedQuery}`;
 
     window.open(url, '_black');
+  }
+
+  const handleFavorite = () => {
+    const key = `favorite-${result}`;
+    if (isFavorite) {
+      localStorage.removeItem(key);
+      setIsFavorite(false);
+    } else {
+      localStorage.setItem(key, "true");
+      setIsFavorite(true);
+    }
   }
 
   const districtOptions = selectedCity ? districts[selectedCity] || [] : [];
@@ -52,6 +65,14 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
           onClick={() => goToStep(1)}
         >
           처음으로
+        </button>
+        <button className={style.favoriteButton} onClick={handleFavorite}>
+          {isFavorite ? (
+            <AiFillStar size={24} color="#FFD700" />
+          ) : (
+            <AiOutlineStar size={24} color="#ccc" />
+          )}
+          즐겨찾기
         </button>
         <div className={style.content}>
           <h1 className={style.title}>{result}</h1>
