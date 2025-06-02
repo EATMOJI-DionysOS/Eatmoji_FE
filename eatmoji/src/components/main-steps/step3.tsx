@@ -18,6 +18,14 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
     setSelectedDistrict("");
   }
 
+  const goToEat = () => {
+    const query = `${selectedCity} ${selectedDistrict} ${result}`;
+    const encodedQuery = encodeURIComponent(query);
+    const url = `https://map.kakao.com/?=${encodedQuery}`;
+
+    window.open(url, '_black');
+  }
+
   const districtOptions = selectedCity ? districts[selectedCity] || [] : [];
 
   if (result === null) {
