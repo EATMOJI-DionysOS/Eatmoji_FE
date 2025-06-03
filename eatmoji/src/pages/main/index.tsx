@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Head from "next/head";
 import Step1 from "@/components/main-steps/step1";
 import Step2 from "@/components/main-steps/step2";
 import Step3 from "@/components/main-steps/step3";
-import Loading from "@/components/main-steps/loading";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import sharedStyle from "@/styles/shared.module.css";
 
 export default function Main() {
@@ -15,29 +15,38 @@ export default function Main() {
   const nextStep = () => setStep((prev) => prev + 1);
   const goToStep = (stepNumber: number) => setStep(stepNumber);
 
-  const handleGenerateResult = async () => {
+  useEffect(() => {
+    console.log("result changed:", result);
+  }, [result]);
+
+  const handleGenerateResult = async (selectedAnswer2: string) => {
     setStep(3);
+    console.log("선택된 이모지:", selectedAnswer2);
 
     try {
-      const response = await fetch("/api/recommend", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ answer2 }),
-      });
+      // const response = await fetch("/api/recommend", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ answer2 }),
+      // });
 
-      if (!response.ok) {
-        throw new Error("결과를 생성하는 데 실패했습니다.");
-      }
+      // if (!response.ok) {
+      //   throw new Error("결과를 생성하는 데 실패했습니다.");
+      // }
 
-      const data = await response.json();
-      setResult(data.result);
-      setStep(4);
+      // const data = await response.json();
+      // setResult(data.result);
+
+      // 로컬 더미 결과 (answer2 값 포함하여 출력 예시)
+      const dummyResult = `메뉴는 ${selectedAnswer2} 입니다!`;
+      // 실제 네트워크 호출 대신 1초 딜레이 후 결과 설정
+      await new Promise((res) => setTimeout(res, 1000));
+      setResult(dummyResult);
     } catch (error) {
       console.error("GPT 호출 실패:", error);
       setResult("오류가 발생했어요. 다시 시도해 주세요.");
-      setStep(4);
     }
   };
 
@@ -46,11 +55,9 @@ export default function Main() {
       case 1:
         return <Step1 nextStep={nextStep} setAnswer1={setAnswer1} />;
       case 2:
-        return <Step2 nextStep={nextStep} goToStep={goToStep} setAnswer2={setAnswer2} />;
+        return <Step2 answer1={answer1} goToStep={goToStep} setAnswer2={setAnswer2} generateResult={handleGenerateResult} />;
       case 3:
-        return <Step3 answer2={answer2} generateResult={handleGenerateResult} />;
-      case 4:
-        return <Loading result={result} goToStep={goToStep} />;
+        return <Step3 result={result} goToStep={goToStep}/>;
       default:
         return null;
     }
