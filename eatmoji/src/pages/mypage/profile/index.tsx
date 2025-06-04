@@ -30,19 +30,19 @@ export default function Profile() {
 
                 <div className={style.profileTags}>
                     <div className={style.tagbox}>
-                        <span className={style.tagLabel}>Category</span>
+                        <span className={style.tagLabel}>카테고리</span>
                         <div className={style.tagGroup}>
                             <span className={style.tag}>한식</span>
                         </div>
                     </div>
                     <div className={style.tagbox}>
-                        <span className={style.tagLabel}>Flavor</span>
+                        <span className={style.tagLabel}>맛</span>
                         <div className={style.tagGroup}>
                             <span className={style.tag}>단 맛</span>
                         </div>
                     </div>
                     <div className={style.tagbox}>
-                        <span className={style.tagLabel}>Disease</span>
+                        <span className={style.tagLabel}>식이요법</span>
                         <div className={style.tagGroup}>
                             <span className={style.tag}>저염식</span>
                             <span className={style.tag}>저당식</span>
@@ -50,7 +50,7 @@ export default function Profile() {
                         </div>
                     </div>
                     <div className={style.tagbox}>
-                        <span className={style.tagLabel}>Allergy</span>
+                        <span className={style.tagLabel}>알레르기</span>
                         <div className={style.tagGroup}>
                             <span className={style.tag}>땅콩</span>
                         </div>
