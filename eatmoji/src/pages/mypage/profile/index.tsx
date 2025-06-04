@@ -2,9 +2,21 @@ import Head from "next/head";
 import sharedStyle from "@/styles/shared.module.css";
 import style from "./index.module.css";
 import { useRouter } from "next/router";
+import { useMemo } from "react";
 
 export default function Profile() {
     const router = useRouter();
+
+    const { category, flavor, disease, allergy } = router.query;
+
+    const parsedData = useMemo(() => {
+        return {
+            category: category ? JSON.parse(category as string) : [],
+            flavor: flavor ? JSON.parse(flavor as string) : [],
+            disease: disease ? JSON.parse(disease as string) : [],
+            allergy: allergy ? JSON.parse(allergy as string) : [],
+        };
+    }, [category, flavor, disease, allergy]);
 
     return (
         <>
@@ -32,27 +44,33 @@ export default function Profile() {
                     <div className={style.tagbox}>
                         <span className={style.tagLabel}>카테고리</span>
                         <div className={style.tagGroup}>
-                            <span className={style.tag}>한식</span>
+                            {parsedData.category.map((item: string, idx: number) => (
+                                <span key={idx} className={style.tag}>{item}</span>
+                            ))}
                         </div>
                     </div>
                     <div className={style.tagbox}>
                         <span className={style.tagLabel}>맛</span>
                         <div className={style.tagGroup}>
-                            <span className={style.tag}>단 맛</span>
+                            {parsedData.flavor.map((item: string, idx: number) => (
+                                <span key={idx} className={style.tag}>{item}</span>
+                            ))}
                         </div>
                     </div>
                     <div className={style.tagbox}>
                         <span className={style.tagLabel}>식이요법</span>
                         <div className={style.tagGroup}>
-                            <span className={style.tag}>저염식</span>
-                            <span className={style.tag}>저당식</span>
-                            <span className={style.tag}>저지방</span>
+                            {parsedData.disease.map((item: string, idx: number) => (
+                                <span key={idx} className={style.tag}>{item}</span>
+                            ))}
                         </div>
                     </div>
                     <div className={style.tagbox}>
                         <span className={style.tagLabel}>알레르기</span>
                         <div className={style.tagGroup}>
-                            <span className={style.tag}>땅콩</span>
+                            {parsedData.allergy.map((item: string, idx: number) => (
+                                <span key={idx} className={style.tag}>{item}</span>
+                            ))}
                         </div>
                     </div>
                 </div>
