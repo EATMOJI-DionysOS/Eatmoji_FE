@@ -31,6 +31,7 @@ export default function Login() {
         <img className={style.logo} src="/favicon_logo.png" alt="Logo" />
 
         <div className={style.card}>
+          <h2 className={style.title}>로그인</h2>
           <p className={style.subtitle}>감성 이모지를 통한 메뉴 추천, 지금 시작해보세요!</p>
 
           <form className={style.form}>
