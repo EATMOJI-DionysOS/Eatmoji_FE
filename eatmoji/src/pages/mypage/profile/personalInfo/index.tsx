@@ -27,7 +27,7 @@ export default function PersonalInfo() {
             case 3:
                 return <Step3 goToStep={goToStep} nextStep={nextStep} setAnswer3={setAnswer3}/>;
             case 4:
-                return <Step4 goToStep={goToStep} setAnswer4={setAnswer4}/>;
+                return <Step4 goToStep={goToStep} setAnswer4={setAnswer4} answer1={answer1} answer2={answer2} answer3={answer3}/>;
             default:
                 return null;
         }
