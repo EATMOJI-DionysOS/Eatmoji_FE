@@ -6,11 +6,9 @@ import { useRouter } from "next/router";
 
 export default function Step4({ 
   goToStep, 
-  nextStep,
   setAnswer4,
 }: {
   goToStep: (stepNumber: number) => void;
-  nextStep: () => void;
   setAnswer4: (answer: string[]) => void;
 }) {
   const router = useRouter();
