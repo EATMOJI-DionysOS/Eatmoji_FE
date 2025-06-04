@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
-  const noLayoutPaths = ["/login", "/signup"];
+  const noLayoutPaths = [""];
 
   const isNoLayout = noLayoutPaths.includes(router.pathname);
 
