@@ -7,9 +7,15 @@ import { useRouter } from "next/router";
 export default function Step4({ 
   goToStep, 
   setAnswer4,
+  answer1,
+  answer2,
+  answer3,
 }: {
   goToStep: (stepNumber: number) => void;
   setAnswer4: (answer: string[]) => void;
+  answer1: string[];
+  answer2: string[];
+  answer3: string[];
 }) {
   const router = useRouter();
   const options = [ "땅콩", "대두", "호두", "캐슈넛", "생선", "갑각류", "밀", "우유", "사과", "복숭아", "바나나", ];
@@ -23,9 +29,15 @@ export default function Step4({
     }
   };
 
-  const handleNext = () => {
+  const handleSave = () => {
     setAnswer4(selectedOptions);
-    router.push('/mypage/profile');
+    const query: { [key: string]: string } = {
+      category: JSON.stringify(answer1),
+      flavor: JSON.stringify(answer2),
+      disease: JSON.stringify(answer3),
+      allergy: JSON.stringify(selectedOptions),
+    };
+    router.push({ pathname: "/mypage/profile", query });
   };
 
   return (
@@ -66,7 +78,7 @@ export default function Step4({
           </button>
           <button 
             className={style.nextButton} 
-            onClick={handleNext}
+            onClick={handleSave}
           >
             저장
           </button>
