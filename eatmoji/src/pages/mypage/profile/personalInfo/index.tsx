@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Head from "next/head";
 import sharedStyle from "@/styles/shared.module.css";
 import style from "./index.module.css";
@@ -26,7 +27,7 @@ export default function PersonalInfo() {
             case 3:
                 return <Step3 goToStep={goToStep} nextStep={nextStep} setAnswer3={setAnswer3}/>;
             case 4:
-                return <Step4 goToStep={goToStep} nextStep={nextStep} setAnswer4={setAnswer4}/>;
+                return <Step4 goToStep={goToStep} setAnswer4={setAnswer4}/>;
             default:
                 return null;
         }
