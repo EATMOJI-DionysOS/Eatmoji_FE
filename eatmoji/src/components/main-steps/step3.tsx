@@ -3,7 +3,7 @@ import Head from "next/head";
 import sharedStyle from "@/styles/shared.module.css";
 import style from "./step3.module.css";
 import { useState } from "react";
-import { addressOptions, districts } from "@/dummy/dummyRegion";
+import { addressOptions, districts } from "@/data/regions";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 export default function Step3({result, goToStep} : {result: string | null, goToStep: (stepNumber: number) => void}) {

@@ -3,7 +3,7 @@ import Head from "next/head";
 import sharedStyle from "@/styles/shared.module.css";
 import style from "./[id].module.css";
 import { useEffect, useState } from "react";
-import { addressOptions, districts } from "@/dummy/dummyRegion";
+import { addressOptions, districts } from "@/data/regions";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useRouter } from "next/router";
 import { HistoryItem } from "@/types/history";
