@@ -139,6 +139,22 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+.makeButton {
+  background-color: #d9eaf2;
+}
+
+.makeButton:hover {
+  background-color: #c4e1ed;
+}
+
+.goEatButton {
+  background-color: #f9dd94;
+}
+
+.goEatButton:hover {
+  background-color: #f4cf6d;
+}
+
 .modalOverlay {
   position: fixed;
   top: 0;

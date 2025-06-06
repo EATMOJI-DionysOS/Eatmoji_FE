@@ -80,10 +80,10 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
         </div>
         <p className={style.description}>따뜻한 국물은 언제나 위로가 되지. 미소 된장국은 그 자체로도 건강하고, 가볍게 기분 전환하기에 딱이야.</p>
         <div className={style.buttonContainer}>
-          <button className={style.menulinkButton}>
+          <button className={`${style.menulinkButton} ${style.makeButton}`}>
             만들러가기
           </button>
-          <button className={style.menulinkButton} onClick={openModal}>
+          <button className={`${style.menulinkButton} ${style.goEatButton}`} onClick={openModal}>
             먹으러가기
           </button>
           {isOpen && (
