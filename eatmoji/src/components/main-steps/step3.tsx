@@ -27,7 +27,7 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
     }
     const query = `${selectedCity} ${selectedDistrict} ${result}`;
     const encodedQuery = encodeURIComponent(query);
-    const url = `https://map.kakao.com/?=${encodedQuery}`;
+    const url = `https://map.kakao.com/?q=${encodedQuery}`;
 
     window.open(url, '_black');
   }
