@@ -33,6 +33,7 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
   }
 
   const handleFavorite = () => {
+    if (!result) return;
     const key = `favorite-${result}`;
     if (isFavorite) {
       localStorage.removeItem(key);
