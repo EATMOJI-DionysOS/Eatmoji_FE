@@ -21,6 +21,10 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
   }
 
   const goToEat = () => {
+    if (!selectedCity || !selectedDistrict || !result) {
+        alert("시와 구, 그리고 추천 결과가 모두 필요합니다.");
+        return;
+    }
     const query = `${selectedCity} ${selectedDistrict} ${result}`;
     const encodedQuery = encodeURIComponent(query);
     const url = `https://map.kakao.com/?=${encodedQuery}`;
