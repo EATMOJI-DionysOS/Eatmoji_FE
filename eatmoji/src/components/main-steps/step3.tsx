@@ -29,7 +29,7 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
     const encodedQuery = encodeURIComponent(query);
     const url = `https://map.kakao.com/?q=${encodedQuery}`;
 
-    window.open(url, '_black');
+    window.open(url, '_blank');
   }
 
   const handleFavorite = () => {
