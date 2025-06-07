@@ -1,16 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import sharedStyle from "@/styles/shared.module.css";
-import style from "./step3.module.css";
+import style from "./index.module.css";
 import { useState } from "react";
 import { addressOptions, districts } from "@/data/regions";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { useRouter } from "next/router";
 
-export default function Step3({result, goToStep} : {result: string | null, goToStep: (stepNumber: number) => void}) {
+export default function Recommend() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const router = useRouter();
+  const result = '미소된장국';
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -25,6 +29,7 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
         alert("시와 구, 그리고 추천 결과가 모두 필요합니다.");
         return;
     }
+
     const query = `${selectedCity} ${selectedDistrict} ${result}`;
     const encodedQuery = encodeURIComponent(query);
     const url = `https://map.kakao.com/?q=${encodedQuery}`;
@@ -67,7 +72,7 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
       <div className={`${sharedStyle.sharedContainer} ${style.container}`}>
         <button
           className={style.backButton}
-          onClick={() => goToStep(1)}
+          onClick={() => router.back()}
         >
           처음으로
         </button>
