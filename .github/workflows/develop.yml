@@ -21,11 +21,11 @@ jobs:
       - name: Push to personal repo
         uses: cpina/github-action-push-to-another-repository@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.PERSONAL_REPO_TOKEN }}
+          API_TOKEN_GITHUB: ${{ secrets.AUTO_DEPLOYMENT }}
         with:
           source-directory: 'output'
-          destination-github-username: 'your-github-id'
+          destination-github-username: 'Head-ddy'
           destination-repository-name: 'Eatmoji_FE'
-          destination-repository-username: 'your-github-id'
-          target-branch: 'main'
+          destination-repository-username: 'Head-ddy'
+          target-branch: 'develop'
           commit-message: 'chore: deploy eatmoji from team repo'
