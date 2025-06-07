@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: eatmoji
+        working-directory: Eatmoji_FE
     container: pandoc/latex
     steps:
       - uses: actions/checkout@v2
