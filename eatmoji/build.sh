@@ -1,7 +1,13 @@
 #!/bin/sh
 
-# 현재 위치: EATMOJI_FE/eatmoji
-mkdir -p ../output
+# 현재 위치는 eatmoji 디렉토리 내부이므로 상위 디렉토리로 이동
+cd ..
 
-# eatmoji 디렉토리의 내용만 복사
-rsync -av --exclude=node_modules --exclude=.next --exclude=output --exclude=build.sh ./ ../output
+# 기존 output 디렉토리 제거 (있다면)
+rm -rf output
+
+# output 디렉토리 생성
+mkdir output
+
+# eatmoji 디렉토리만 복사
+cp -R eatmoji/* output/

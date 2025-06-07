@@ -1,29 +1,31 @@
-name: git push into another repo to deploy to vercel
+name: Deploy Eatmoji to Personal Repo
 
 on:
   push:
-    branches: [develop]
+    branches:
+      - develop  # or main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: eatmoji
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout source repo
+        uses: actions/checkout@v3
 
-      - name: creates output
-        run: sh ./build.sh
+      - name: Copy eatmoji directory
+        run: |
+          mkdir output
+          cp -R ./eatmoji/* ./output/
 
-      - name: Pushes to another repository
+      - name: Push to personal repo
         uses: cpina/github-action-push-to-another-repository@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.AUTO_DEPLOYMENT }}
+          API_TOKEN_GITHUB: ${{ secrets.PERSONAL_REPO_TOKEN }}
         with:
-          source-directory: '../output'
-          destination-github-username: Head-ddy
-          destination-repository-name: Eatmoji_FE
-          user-email: ${{ secrets.OFFICIAL_ACCOUNT_EMAIL }}
-          commit-message: "chore: deploy eatmoji from team repo"
-          target-branch: develop
+          source-directory: 'output'
+          destination-github-username: 'your-github-id'
+          destination-repository-name: 'Eatmoji_FE'
+          destination-repository-username: 'your-github-id'
+          target-branch: 'main'
+          commit-message: 'chore: deploy eatmoji from team repo'
