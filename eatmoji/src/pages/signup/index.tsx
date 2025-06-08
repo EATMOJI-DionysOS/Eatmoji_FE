@@ -4,6 +4,7 @@ import sharedStyle from "@/styles/shared.module.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import style from "./index.module.css";
+import { signupRequest } from "@/lib/api/auth";
 
 export default function Signup() {
   type AgreementKey = "terms" | "privacy" | "marketing";
@@ -51,15 +52,22 @@ export default function Signup() {
     form.confirmPassword.trim() !== "" &&
     form.password === form.confirmPassword;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (form.password !== form.confirmPassword) {
       alert("비밀번호가 일치하지 않습니다.");
       return;
     }
-    console.log("회원가입 정보:", form);
-    alert("회원가입이 완료되었습니다!");
-    router.push("/login");
+    try {
+      const data = await signupRequest(form.email, form.password);
+      console.log("회원가입 성공:", data);
+      alert("회원가입이 완료되었습니다!");
+      router.push("/login");
+    } 
+    catch (error) {
+      console.error("로그인 실패:", error);
+      alert("회원가입에 실패했습니다. 이메일과 비밀번호를 확인해주세요.");
+    }
   };
   
   return (
