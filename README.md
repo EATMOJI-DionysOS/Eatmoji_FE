@@ -117,7 +117,7 @@ EATMOJI/
 
 </br>
 
-## 📚 더 아는 길
+## 📚 유용한 링크
 
 * [🔗 GitHub Wiki 바로가기](https://github.com/EATMOJI-DionysOS/Eatmoji_FE/wiki)
 * [📦 Backend Repository](https://github.com/EATMOJI-DionysOS/Eatmoji_BE)
