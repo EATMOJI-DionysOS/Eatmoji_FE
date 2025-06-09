@@ -1,7 +1,7 @@
 # 🍽️ Eatmoji Frontend
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" height="40"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" height="40"><img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" height="40">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" height="40"><img src="https://img.shields.io/badge/React-9333EA?style=for-the-badge&logo=react&logoColor=61DAFB" height="40"><img src="https://img.shields.io/badge/Vercel-C71585?style=for-the-badge&logo=vercel&logoColor=white" height="40">
 </div>
 
 > 감정을 이모지로 표현하고, 그 이모지에 어울리는 음식을 추천해주는 감성 기반 메뉴 추천 서비스 **Eatmoji**의 프론트엔드 레포지토리입니다.
