@@ -113,20 +113,21 @@ EATMOJI/
 
 ## 🛠️ 기술 스택
 
+### ✔️Front-end
   <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" /><img src="https://img.shields.io/badge/React-9333EA?style=for-the-badge&logo=react&logoColor=61DAFB" /><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" /><img src="https://img.shields.io/badge/Zustand-A0522D?style=for-the-badge&logo=Zustand&logoColor=white" /><img src="https://img.shields.io/badge/SWR-F59E0B?style=for-the-badge&logo=vercel&logoColor=white" />
 
-### 🎨 스타일링 및 UI
+### ✔️Styling & UI
 
   <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white" /><img src="https://img.shields.io/badge/PostCSS-DD3A0A?style=for-the-badge&logo=postcss&logoColor=white" /><img src="https://img.shields.io/badge/React Icons-E91E63?style=for-the-badge&logo=react&logoColor=white" />
 
-### ⚙️ 개발 및 배포 환경
+### ✔️Development & Deployment Environment
   <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" /><img src="https://img.shields.io/badge/Vercel-C71585?style=for-the-badge&logo=vercel&logoColor=white" />
 
 </br>
 
 ## 🤝 가이드
 
-* Pull Request 전에는 반드시 [CONTRIBUTING.md](./CONTRIBUTING.md)를 확인해주세요.
+* Pull Request 전에는 반드시 [CONTRIBUTING.md](CONTRIBUTING.MD)를 확인해주세요.
 * 커밋 메시지는 [Conventional Commits](https://www.conventionalcommits.org/) 형식을 권장합니다.
 * 브랜치 전략 및 PR 리뷰 프로세스는 Wiki에 설명되어 있습니다.
 
@@ -134,7 +135,7 @@ EATMOJI/
 
 ## 📄 라이선스
 
-번 프로젝트는 [MIT License](./LICENSE)에 따라 오픈소스로 공개되어 있습니다.
+번 프로젝트는 [MIT License](LICENSE)에 따라 오픈소스로 공개되어 있습니다.
 
 </br>
 
