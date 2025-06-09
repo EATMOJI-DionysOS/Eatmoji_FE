@@ -7,8 +7,6 @@
 > 감정을 이모지로 표현하고, 그 이모에 어울리는 음식을 추천해주는 감성 기반 메뉴 추천 서비스 **Eatmoji**의 프론트엔드 레포지토리입니다.
 
 </br>
----
-</br>
 </br>
 
 ## 📌 소개
@@ -18,8 +16,6 @@ Eatmoji는 감정 상황을 이모지로 선택하면, 이어 맞는 음식을 �
 
 이 저장소는 Eatmoji 서비스의 **프론트엔드 클라이언트**로, 사용자와 상호작용하는 모든 화면을 담당합니다.
 
-</br>
----
 </br>
 </br>
 
@@ -33,8 +29,6 @@ Eatmoji는 감정 상황을 이모지로 선택하면, 이어 맞는 음식을 �
 * 🔄 추천 기록 무한 스크롤 조회 기능
 * 🧱 사용자 경험을 고려한 반응형 UI
 
-</br>
----
 </br>
 </br>
 
@@ -68,16 +62,12 @@ Eatmoji는 감정 상황을 이모지로 선택하면, 이어 맞는 음식을 �
 </div>
 
 </br>
----
-</br>
 </br>
 
 ## 🚀 배포 링크
 
 [<img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />](https://eatmoji.vercel.app)
 
-</br>
----
 </br>
 </br>
 
@@ -103,8 +93,6 @@ NEXT_PUBLIC_API_URL=https://api.example.com
 
 > 기본 포트는 `http://localhost:3000` 입니다.
 
-</br>
----
 </br>
 </br>
 
@@ -137,8 +125,6 @@ EATMOJI/
 ```
 
 </br>
----
-</br>
 </br>
 
 ## 🤝 기억 가이드
@@ -148,16 +134,12 @@ EATMOJI/
 * 브랜치 전략 및 PR 리뷰 프로세스는 Wiki에 설명되어 있습니다.
 
 </br>
----
-</br>
 </br>
 
 ## 📄 라이선스
 
 번 프로젝트는 [MIT License](../Eatmoji_FE/blob/main/LICENSE)에 따라 오픈소스로 공개되어 있습니다.
 
-</br>
----
 </br>
 </br>
 
@@ -166,8 +148,6 @@ EATMOJI/
 * [🔗 GitHub Wiki 바로가기](https://github.com/EATMOJI-DionysOS/Eatmoji_FE/wiki)
 * [📦 Backend Repository](https://github.com/EATMOJI-DionysOS/Eatmoji_BE)
 
-</br>
----
 </br>
 </br>
 
