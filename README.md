@@ -101,7 +101,7 @@ EATMOJI/
 
 </br>
 
-## 🤝 기억 가이드
+## 🤝 가이드
 
 * Pull Request 전에는 반드시 [CONTRIBUTING.md](../Eatmoji_FE/blob/develop/CONTRIBUTING.md)를 확인해주세요.
 * 커밋 메시지는 [Conventional Commits](https://www.conventionalcommits.org/) 형식을 권장합니다.
