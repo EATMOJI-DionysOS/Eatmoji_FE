@@ -64,27 +64,48 @@ NEXT_PUBLIC_API_URL=https://api.example.com
 
 ```
 EATMOJI/
-├── .next/                  # Next.js 빌드 결과물 (생성됨)
-├── node_modules/           # 설치된 패키지들
-├── public/                 # 정적 파일 (이미지 등)
-├── src/                    # 소스 코드 폴더
-│   ├── components/         # 재사용 가능한 컴포넌트
-│   ├── data/               # 정적 데이터 파일
-│   ├── lib/                # API 호출 및 유틸리티 함수
-│   ├── mock/               # API 목 데이터
-│   ├── pages/              # Next.js 페이지
-│   ├── store/              # 상태 관리 (Zustand 등)
-│   ├── styles/             # 전역 및 모듈 스타일
-│   └── types/              # 타입 정의 (TypeScript)
-├── .env                    # 환경 변수 설정
-├── .gitignore              # Git 무시 파일 목록
-├── build.sh                # 프로젝트 빌드 스크립트
-├── eslint.config.mjs       # ESLint 설정
-├── next-env.d.ts           # Next.js 타입 지원 파일
-├── package.json            # 프로젝트 메타정보 및 스크립트
-├── package-lock.json       # 의존성 고정 파일
-├── tsconfig.json           # TypeScript 설정
-└── README.md               # 프로젝트 문서
+├── .next/                                # Next.js 빌드 결과물 (자동 생성)
+├── node_modules/                         # 설치된 패키지들 (자동 생성)
+├── public/                               # 정적 파일 (이미지, favicon 등)
+├── src/                                  # 소스 코드 폴더
+│   ├── components/                       # 재사용 가능한 UI 컴포넌트 모음
+│   │   ├── main-steps/                   # 메인 페이지 단계별 컴포넌트
+│   │   ├── mypage-steps/                 # 마이페이지 단계별 컴포넌트
+│   │   ├── global-layout.module.css      # 글로벌 레이아웃 스타일
+│   │   └── global-layout.tsx             # 글로벌 레이아웃 컴포넌트
+│   ├── data/                             # 정적 데이터 파일
+│   ├── lib/                              # API 호출 및 유틸리티 함수
+│   │   └── api/
+│   ├── mock/                             # API 목(mock) 데이터
+│   ├── pages/                            # Next.js 페이지(라우팅)
+│   │   ├── login/                        # 로그인 페이지
+│   │   ├── main/                         # 메인 페이지
+│   │   ├── mypage/                       # 마이페이지
+│   │   │   ├── history/                  # 마이페이지 내 추천 기록 페이지
+│   │   │   └── profile/                  # 마이페이지 내 프로필 페이지
+│   │   ├── signup/                       # 회원가입 페이지
+│   │   ├── todaymenu/                    # 오늘의 메뉴 관련 페이지
+│   │   │   └── recommend/                # 메뉴 추천 페이지
+│   │   ├── _app.tsx                      # Next.js 커스텀 App 컴포넌트
+│   │   ├── _document.tsx                 # Next.js 커스텀 Document 컴포넌트
+│   │   ├── auth-required.module.css      # 인증 필요 페이지 스타일
+│   │   ├── auth-required.tsx             # 인증 필요 페이지 컴포넌트
+│   │   ├── index.module.css              # 루트 페이지 스타일
+│   │   └── index.tsx                     # 루트 페이지 컴포넌트
+│   ├── store/                            # 전역 상태 관리(Zustand 등)
+│   ├── styles/                           # 전역 및 공용 스타일
+│   │   ├── globals.css                   # 전체 프로젝트에 적용되는 글로벌 스타일
+│   │   └── shared.module.css             # 여러 컴포넌트에서 공유되는 스타일
+│   └── types/                            # 타입 정의(TypeScript)
+├── .env                                  # 환경 변수 설정 파일
+├── .gitignore                            # Git 무시 파일 목록
+├── build.sh                              # 프로젝트 빌드 스크립트
+├── eslint.config.mjs                     # ESLint 설정
+├── next-env.d.ts                         # Next.js 타입 지원 파일
+├── package.json                          # 프로젝트 메타정보 및 스크립트
+├── package-lock.json                     # 의존성 고정 파일
+├── tsconfig.json                         # TypeScript 설정
+└── README.md                             # 프로젝트 문서
 
 ```
 
