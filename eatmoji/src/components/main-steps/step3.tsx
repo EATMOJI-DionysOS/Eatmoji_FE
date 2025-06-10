@@ -53,11 +53,14 @@ export default function Step3({result, goToStep} : {result: RecommendResponse  |
 
 
   const goToEat = () => {
-    if (!selectedCity || !selectedDistrict || !result?.recommendations[0].food) {
+    const rawFood = result?.recommendations[0].food;
+    if (!selectedCity || !selectedDistrict || !rawFood) {
         alert("시와 구, 그리고 추천 결과가 모두 필요합니다.");
         return;
     }
-    const query = `${selectedCity} ${selectedDistrict} ${result?.recommendations[0].food}`;
+    const cleanFood = rawFood.replace(/\s/g, "");
+    console.log("푸드:", cleanFood);
+    const query = `${selectedCity} ${selectedDistrict} ${cleanFood}`;
     const encodedQuery = encodeURIComponent(query);
     const url = `https://map.kakao.com/?q=${encodedQuery}`;
 
