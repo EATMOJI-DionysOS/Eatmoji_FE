@@ -7,6 +7,7 @@ import { addressOptions, districts } from "@/data/regions";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import type { RecommendResponse } from "@/types/recommend";
 import { useRouter } from "next/router";
+import { fetchRecipeByFood } from "@/lib/api/recipe";
 
 export default function Step3({result, goToStep} : {result: RecommendResponse  | null, goToStep: (stepNumber: number) => void}) {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +24,33 @@ export default function Step3({result, goToStep} : {result: RecommendResponse  |
     setSelectedCity(e.target.value);
     setSelectedDistrict("");
   }
+
+  const goToMake = async () => {
+    const rawFood = result?.recommendations[0].food;
+    if (!rawFood) {
+      alert("추천된 음식 정보가 없습니다.");
+      return;
+    }
+
+    const cleanFood = rawFood.replace(/\s/g, "");
+    console.log("푸드:", cleanFood);
+
+    try {
+      const url = await fetchRecipeByFood(cleanFood);
+      if (url === "Error: Recipe not found") {
+        router.push("/recipe-error"); // 에러 페이지로 이동
+        return;
+      }
+      if (!url.startsWith("http")) {
+        throw new Error("잘못된 링크 형식입니다.");
+      }
+      window.open(url, "_blank");
+    } catch (error) {
+      console.error("레시피 링크 호출 실패:", error);
+      alert("레시피 정보를 불러오는 데 실패했습니다.");
+    }
+  };
+
 
   const goToEat = () => {
     if (!selectedCity || !selectedDistrict || !result?.recommendations[0].food) {
