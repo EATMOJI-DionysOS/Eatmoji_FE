@@ -74,7 +74,7 @@ export default function Signup() {
       router.push("/login");
     } 
     catch (error) {
-      console.error("로그인 실패:", error);
+      console.error("회원가입 실패:", error);
       alert("회원가입에 실패했습니다. 이메일과 비밀번호를 확인해주세요.");
     }
   };
