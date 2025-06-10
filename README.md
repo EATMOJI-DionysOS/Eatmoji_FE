@@ -135,7 +135,7 @@ EATMOJI/
 
 ## 📄 라이선스
 
-번 프로젝트는 [MIT License](LICENSE)에 따라 오픈소스로 공개되어 있습니다.
+본 프로젝트는 [MIT License](LICENSE)에 따라 오픈소스로 공개되어 있습니다.
 
 </br>
 
