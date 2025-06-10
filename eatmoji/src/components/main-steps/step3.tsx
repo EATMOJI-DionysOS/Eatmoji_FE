@@ -5,6 +5,7 @@ import style from "./step3.module.css";
 import { useState } from "react";
 import { addressOptions, districts } from "@/data/regions";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import type { RecommendResponse } from "@/types/recommend";
 import { useRouter } from "next/router";
 
 export default function Step3({result, goToStep} : {result: RecommendResponse  | null, goToStep: (stepNumber: number) => void}) {
