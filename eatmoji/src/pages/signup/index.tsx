@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import sharedStyle from "@/styles/shared.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import style from "./index.module.css";
 import { signupRequest } from "@/lib/api/auth";
+import { useTokenStore } from "@/store/tokenStore";
 
 export default function Signup() {
   type AgreementKey = "terms" | "privacy" | "marketing";
@@ -16,6 +17,14 @@ export default function Signup() {
     privacy: false,
     marketing: false,
   });
+  
+  const accessToken = useTokenStore((state) => state.accessToken);
+
+  useEffect(() => {
+    if (accessToken) {
+      router.replace("/"); // 로그인 상태면 홈으로 리다이렉트
+    }
+  }, [accessToken, router]);
 
   const allAgreements =
     agreements.terms && agreements.privacy && agreements.marketing;
