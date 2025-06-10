@@ -1,14 +1,25 @@
-const BASE_URL = process.env.NEXT_PUBLIC_URL_SERVER;
 import { RecommendResponse } from "@/types/recommend";
 
 export const recommendByEmoji = async (
-  emoji: string
+  emoji: string,
+  accessToken: string | null
 ): Promise<RecommendResponse> => {
-  const response = await fetch(`${BASE_URL}/api/recommend/emoji`, {
+  const BASE_URL = process.env.NEXT_PUBLIC_URL_SERVER;
+  const url = accessToken
+    ? `${BASE_URL}/api/recommend/emoji/login`
+    : `${BASE_URL}/api/recommend/emoji`;
+
+  const headers: HeadersInit = {
+    "Content-Type": "application/json",
+  };
+
+  if (accessToken) {
+    headers["Authorization"] = `Bearer ${accessToken}`;
+  }
+
+  const response = await fetch(url, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers,
     body: JSON.stringify({ emoji }),
   });
 
