@@ -7,7 +7,7 @@ import { addressOptions, districts } from "@/data/regions";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useRouter } from "next/router";
 
-export default function Step3({result, goToStep} : {result: string | null, goToStep: (stepNumber: number) => void}) {
+export default function Step3({result, goToStep} : {result: RecommendResponse  | null, goToStep: (stepNumber: number) => void}) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
@@ -23,11 +23,11 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
   }
 
   const goToEat = () => {
-    if (!selectedCity || !selectedDistrict || !result) {
+    if (!selectedCity || !selectedDistrict || !result?.recommendations[0].food) {
         alert("시와 구, 그리고 추천 결과가 모두 필요합니다.");
         return;
     }
-    const query = `${selectedCity} ${selectedDistrict} ${result}`;
+    const query = `${selectedCity} ${selectedDistrict} ${result?.recommendations[0].food}`;
     const encodedQuery = encodeURIComponent(query);
     const url = `https://map.kakao.com/?q=${encodedQuery}`;
 
@@ -82,10 +82,16 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
           즐겨찾기
         </button>
         <div className={style.content}>
-          <h1 className={style.title}>{result}</h1>
-          <img className={style.image} src="/favicon_logo.png" alt="Logo" />
+          {result.recommendations.length > 0 ? (
+            <>
+              <h1 className={style.title}>&quot;{result.recommendations[0].food}&quot;</h1>
+              <img className={style.image} src="/favicon_logo.png" alt="Logo" />
+              <p className={style.description}>{result.recommendations[0].reason}</p>
+            </>
+          ) : (
+            <p>추천 결과가 없습니다.</p>
+          )}
         </div>
-        <p className={style.description}>따뜻한 국물은 언제나 위로가 되지. 미소 된장국은 그 자체로도 건강하고, 가볍게 기분 전환하기에 딱이야.</p>
         <div className={style.buttonContainer}>
           <button className={`${style.menulinkButton} ${style.makeButton}`}>
             만들러가기
