@@ -5,6 +5,7 @@ import style from "./step3.module.css";
 import { useState } from "react";
 import { addressOptions, districts } from "@/data/regions";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 export default function Step3({result, goToStep} : {result: string | null, goToStep: (stepNumber: number) => void}) {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +15,7 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
+  const router = useRouter();
 
   const handleCityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCity(e.target.value);
@@ -67,7 +69,7 @@ export default function Step3({result, goToStep} : {result: string | null, goToS
       <div className={`${sharedStyle.sharedContainer} ${style.container}`}>
         <button
           className={style.backButton}
-          onClick={() => goToStep(1)}
+          onClick={() => {goToStep(1); router.reload();}}
         >
           처음으로
         </button>
