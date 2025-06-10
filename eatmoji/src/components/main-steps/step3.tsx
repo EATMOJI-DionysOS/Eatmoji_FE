@@ -13,6 +13,7 @@ export default function Step3({result, goToStep} : {result: RecommendResponse  |
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [isFavorite, setIsFavorite] = useState(false);
+  const isDisabled = result?.recommendations.length === 0;
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -74,7 +75,7 @@ export default function Step3({result, goToStep} : {result: RecommendResponse  |
         >
           처음으로
         </button>
-        <button className={style.favoriteButton} onClick={handleFavorite}>
+        <button className={style.favoriteButton} onClick={handleFavorite} disabled={isDisabled}>
           {isFavorite ? (
             <AiFillStar size={24} color="#FFD700" />
           ) : (
@@ -94,10 +95,10 @@ export default function Step3({result, goToStep} : {result: RecommendResponse  |
           )}
         </div>
         <div className={style.buttonContainer}>
-          <button className={`${style.menulinkButton} ${style.makeButton}`}>
+          <button className={`${style.menulinkButton} ${style.makeButton}`} onClick={goToMake} disabled={isDisabled}>
             만들러가기
           </button>
-          <button className={`${style.menulinkButton} ${style.goEatButton}`} onClick={openModal}>
+          <button className={`${style.menulinkButton} ${style.goEatButton}`} onClick={openModal} disabled={isDisabled}>
             먹으러가기
           </button>
           {isOpen && (
