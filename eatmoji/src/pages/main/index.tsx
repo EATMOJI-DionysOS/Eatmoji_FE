@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import sharedStyle from "@/styles/shared.module.css";
 import { recommendByEmoji } from "@/lib/api/recommend";
 import type { RecommendResponse } from "@/types/recommend";
+import { useTokenStore } from "@/store/tokenStore";
 
 export default function Main() {
   const [step, setStep] = useState(1);
@@ -16,6 +17,7 @@ export default function Main() {
 
   const nextStep = () => setStep((prev) => prev + 1);
   const goToStep = (stepNumber: number) => setStep(stepNumber);
+  const accessToken = useTokenStore(state => state.accessToken);
 
   useEffect(() => {
     console.log("result changed:", result);
@@ -26,7 +28,7 @@ export default function Main() {
     console.log("선택된 이모지:", selectedAnswer2);
 
     try {
-      const data = await recommendByEmoji(selectedAnswer2);
+      const data = await recommendByEmoji(selectedAnswer2, accessToken);
       setResult(data);
     } catch (error) {
       console.error("추천 API 호출 실패:", error);
