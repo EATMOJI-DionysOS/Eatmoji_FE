@@ -102,7 +102,7 @@ export default function Step3({result, goToStep} : {result: RecommendResponse  |
       <div className={`${sharedStyle.sharedContainer} ${style.container}`}>
         <button
           className={style.backButton}
-          onClick={() => {goToStep(1); router.reload();}}
+          onClick={() => {goToStep(1); setIsOpen(false);}}
         >
           처음으로
         </button>
