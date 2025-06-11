@@ -5,7 +5,7 @@ import style from "./index.module.css";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useCallback } from "react";
 import useSWRInfinite from "swr/infinite";
-import { fetchHistory } from "@/lib/fetch-history";
+import { fetchHistory } from "@/lib/api/history";
 import { HistoryItem } from "@/types/history";
 
 const PAGE_SIZE = 10;
@@ -15,7 +15,7 @@ export default function History() {
 
   const getKey = (pageIndex: number, previousPageData: HistoryItem[] | null) => {
     if (previousPageData && previousPageData.length === 0) return null; // 더 이상 데이터 없음
-    return `${pageIndex + 1}`; // 키는 페이지 번호
+    return `history?page=${pageIndex + 1}&pageSize=${PAGE_SIZE}`; // 키는 페이지 번호
   };
 
   const {
@@ -25,7 +25,9 @@ export default function History() {
     isValidating,
   } = useSWRInfinite<HistoryItem[]>(
     getKey,
-    async (page) => fetchHistory({ page: Number(page), pageSize: PAGE_SIZE }),
+    async () => {
+      return fetchHistory();
+    },
     { revalidateFirstPage: false }
   );
 
