@@ -1,11 +1,16 @@
 import { useTokenStore } from "@/store/tokenStore";
-import { Preference, UserProfileData } from "@/types/profile";
+import { UserProfileData } from "@/types/profile";
 
 const BASE_URL = process.env.NEXT_PUBLIC_URL_SERVER;
 
-export async function updateProfileRequest(data: Preference) {
-  const res = await fetch(`${BASE_URL}/user/profile`, {
-    method: "PATCH",
+export async function updateProfileRequest(data: {
+  category: string[];
+  flavor: string[];
+  disease: string[];
+  allergy: string[];
+}): Promise<UserProfileData> {
+const res = await fetch(`${BASE_URL}/user/profile`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${useTokenStore.getState().accessToken}`,
@@ -29,12 +34,7 @@ export async function updateProfileRequest(data: Preference) {
     throw new Error(message);
   }
 
-  const contentType = res.headers.get("content-type") || "";
-  if (contentType.includes("application/json")) {
-    return res.json();
-  } else {
-    return res.text();
-  }
+  return res.json();
 }
 
 export async function getProfile(): Promise<UserProfileData> {
