@@ -17,15 +17,23 @@ export const recommendByEmoji = async (
     headers["Authorization"] = `Bearer ${accessToken}`;
   }
 
-  const response = await fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify({ emoji }),
-  });
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ emoji }),
+    });
 
-  if (!response.ok) {
-    throw new Error("추천 결과를 불러오지 못했습니다.");
+    if (!response.ok) {
+      const errorBody = await response.text();
+      console.error("API Error:", response.status, errorBody);
+      throw new Error("추천 결과를 불러오지 못했습니다.");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("네트워크 또는 API 호출 중 에러 발생:", error);
+    throw error;
   }
-
-  return response.json();
 };
