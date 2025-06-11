@@ -3,8 +3,8 @@ import { HistoryItem } from "@/types/history";
 
 const BASE_URL = process.env.NEXT_PUBLIC_URL_SERVER;
 
-export async function fetchHistory(): Promise<HistoryItem[]> {
-  const res = await fetch(`${BASE_URL}/history`, {
+export async function fetchHistory(page: number, pageSize: number): Promise<HistoryItem[]> {
+  const res = await fetch(`${BASE_URL}/history?page=${page}&pageSize=${pageSize}`, {
     method: "GET",
     headers: {
       "Authorization": `Bearer ${useTokenStore.getState().accessToken}`,
