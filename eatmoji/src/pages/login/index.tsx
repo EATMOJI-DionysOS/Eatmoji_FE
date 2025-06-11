@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import style from "./index.module.css";
 import { useAuthStore } from "@/store/authStore";
+import { useUserStore } from "@/store/userStore";
 import { loginRequest } from "@/lib/api/auth";
 import PersonalInfoModal from "@/components/personalInfoModal";
 
@@ -35,8 +36,9 @@ export default function Login() {
     try {
       const data: LoginResponse = await loginRequest(loginForm.email, loginForm.password);
       console.log("로그인 성공:", data);
-      const { accessToken, refreshToken } = data;
+      const { accessToken, refreshToken, email } = data;
       useAuthStore.getState().setAuth(true, { accessToken, refreshToken });
+      useUserStore.getState().setEmail(email);
       setShowModal(true);
     } catch (error) {
       console.error("로그인 실패:", error);
