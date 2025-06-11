@@ -42,17 +42,17 @@ export default function Step4({
     }
 
     const requestBody = {
-      category: { add: answer1, remove: [] },
-      flavor: { add: answer2, remove: [] },
-      disease: { add: answer3, remove: [] },
-      allergy: { add: selectedOptions, remove: [] },
+      category: answer1,
+      flavor: answer2,
+      disease: answer3,
+      allergy: selectedOptions,
     };
 
     try {
       const result = await updateProfileRequest(requestBody);
       console.log("Update successful:", result);
       alert("프로필이 저장되었습니다!");
-      router.push("/mypage"); // 저장 후 이동할 페이지
+      router.push("/mypage/profile"); // 저장 후 이동할 페이지
     } catch (error) {
       console.error("Error updating profile:", error);
       alert("저장 중 오류가 발생했습니다.");
