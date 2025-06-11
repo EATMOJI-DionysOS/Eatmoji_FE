@@ -3,7 +3,7 @@ import Head from "next/head";
 import sharedStyle from "@/styles/shared.module.css";
 import style from "./index.module.css";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import useSWRInfinite from "swr/infinite";
 import { fetchHistory } from "@/lib/api/history";
 import { HistoryItem } from "@/types/history";
@@ -12,6 +12,7 @@ const PAGE_SIZE = 10;
 
 export default function History() {
   const router = useRouter();
+  const [hasMore, setHasMore] = useState(true);
 
   const getKey = (pageIndex: number, previousPageData: HistoryItem[] | null) => {
     if (previousPageData && previousPageData.length === 0) return null; // 더 이상 데이터 없음
@@ -25,26 +26,46 @@ export default function History() {
     isValidating,
   } = useSWRInfinite<HistoryItem[]>(
     getKey,
-    async () => {
-      return fetchHistory();
+    (key) => {
+      const urlParams = new URLSearchParams(key.split("?")[1]);
+      const page = parseInt(urlParams.get("page") || "1");
+      const pageSize = parseInt(urlParams.get("pageSize") || `${PAGE_SIZE}`);
+      return fetchHistory(page, pageSize);
     },
-    { revalidateFirstPage: false }
+    { revalidateFirstPage: false, persistSize: true }
   );
 
-  const items = data ? data.flat() : [];
+  const flatItems = data ? data.flat() : [];
+  const uniqueItems = Array.from(new Map(flatItems.map((item) => [item.id, item])).values());
+
+  useEffect(() => {
+    if (!isValidating && data && data.length >= 2) {
+      const lastPage = data[data.length - 1];
+      const previousItems = data.slice(0, -1).flat();
+      const isAllDuplicated = lastPage.every((item) =>
+        previousItems.some((prev) => prev.id === item.id)
+      );
+      if (isAllDuplicated) {
+        console.log("중복 페이지로 감지되어 더 이상 로딩하지 않음");
+        setHasMore(false); // 🔹 더 이상 불러오지 않도록 설정
+      }
+    }
+  }, [data, isValidating]);
+
   const loaderRef = useRef<HTMLDivElement | null>(null);
 
-  const handleClick = (id: string) => {
-    router.push(`/mypage/history/recommended/${id}`);
+  const handleClick = (item: HistoryItem) => {
+    sessionStorage.setItem("selectedHistoryItem", JSON.stringify(item));
+    router.push(`/mypage/history/recommended/${item.id}`);
   };
 
   const onIntersect = useCallback(
     (entries: IntersectionObserverEntry[]) => {
-      if (entries[0].isIntersecting && !isValidating) {
+      if (entries[0].isIntersecting && !isValidating && hasMore) {
         setSize(size + 1);
       }
     },
-    [size, isValidating, setSize]
+    [size, isValidating, hasMore, setSize]
   );
 
   useEffect(() => {
@@ -68,11 +89,11 @@ export default function History() {
         <div className={style.header}>추천 기록</div>
 
         <div className={style.historyList}>
-          {items.map((item) => (
+          {uniqueItems.map((item) => (
             <div
               key={item.id}
               className={style.historyCard}
-              onClick={() => handleClick(item.id)}
+              onClick={() => handleClick(item)}
             >
               <div className={style.emoji}>{item.emotion}</div>
               <div className={style.food}>{item.recommendation.food}</div>
