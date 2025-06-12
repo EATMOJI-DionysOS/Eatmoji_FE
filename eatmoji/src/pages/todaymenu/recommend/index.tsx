@@ -9,6 +9,8 @@ import { useRouter } from "next/router";
 import { PersonalizedRecommendation } from "@/lib/api/recommend";
 import type { RecommendResponse } from "@/types/recommend";
 import { fetchRecipeByFood } from "@/lib/api/recipe";
+import { toggleLikeHistoryItem } from "@/lib/api/like";
+import { useTokenStore } from "@/store/tokenStore";
 
 export default function Recommend() {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,15 +79,22 @@ export default function Recommend() {
     window.open(url, '_blank');
   }
 
-  const handleFavorite = () => {
+  const handleFavorite = async (historyId: string) => {
+    const accessToken = useTokenStore.getState().accessToken;
+
+    if (!accessToken) {
+      alert('로그인 후 이용 부탁드립니다.');
+      return;
+    }
+
     if (!result) return;
-    const key = `favorite-${result}`;
-    if (isFavorite) {
-      localStorage.removeItem(key);
-      setIsFavorite(false);
-    } else {
-      localStorage.setItem(key, "true");
-      setIsFavorite(true);
+
+    try {
+      const newLikeStatus = await toggleLikeHistoryItem(historyId);
+      setIsFavorite(newLikeStatus);
+      console.log('Like 상태가 변경되었습니다:', newLikeStatus);
+    } catch (error) {
+      console.error('Like 상태 변경 중 오류 발생:', error);
     }
   }
 
@@ -116,7 +125,7 @@ export default function Recommend() {
         >
           처음으로
         </button>
-        <button className={style.favoriteButton} onClick={handleFavorite}>
+        <button className={style.favoriteButton} onClick={() => result?.historyId && handleFavorite(result.historyId)}>
           {isFavorite ? (
             <AiFillStar size={24} color="#FFD700" />
           ) : (
