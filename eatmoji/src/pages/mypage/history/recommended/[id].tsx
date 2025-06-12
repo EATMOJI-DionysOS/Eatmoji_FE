@@ -104,7 +104,7 @@ export default function HistoryDetail() {
                 ) : (
                     <AiOutlineStar size={24} color="#ccc" />
                 )}
-                즐겨찾기
+                좋아요
             </button>
             <div className={style.content}>
                 <img className={style.image} src="/favicon_logo.png" alt="Logo" />

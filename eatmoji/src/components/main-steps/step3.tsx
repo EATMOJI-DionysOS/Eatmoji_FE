@@ -121,7 +121,7 @@ export default function Step3({result, goToStep} : {result: RecommendResponse  |
           ) : (
             <AiOutlineStar size={24} color="#ccc" />
           )}
-          즐겨찾기
+          좋아요
         </button>
         <div className={style.content}>
           {result.recommendations.length > 0 ? (
