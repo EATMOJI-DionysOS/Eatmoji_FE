@@ -1,3 +1,4 @@
+import { useTokenStore } from "@/store/tokenStore";
 import { RecommendResponse } from "@/types/recommend";
 
 export const recommendByEmoji = async (
@@ -36,4 +37,21 @@ export const recommendByEmoji = async (
     console.error("네트워크 또는 API 호출 중 에러 발생:", error);
     throw error;
   }
+};
+
+export const PersonalizedRecommendation = async (): Promise<RecommendResponse> => {
+  const response = await fetch("/api/recommend/personalized", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${useTokenStore.getState().accessToken}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch personalized recommendation");
+  }
+
+  const data: RecommendResponse = await response.json();
+  return data;
 };
