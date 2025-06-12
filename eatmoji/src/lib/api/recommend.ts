@@ -1,11 +1,12 @@
 import { useTokenStore } from "@/store/tokenStore";
 import { RecommendResponse } from "@/types/recommend";
 
+const BASE_URL = process.env.NEXT_PUBLIC_URL_SERVER;
+
 export const recommendByEmoji = async (
   emoji: string,
   accessToken: string | null
 ): Promise<RecommendResponse> => {
-  const BASE_URL = process.env.NEXT_PUBLIC_URL_SERVER;
   const url = accessToken
     ? `${BASE_URL}/api/recommend/emoji/login`
     : `${BASE_URL}/api/recommend/emoji`;
@@ -40,7 +41,7 @@ export const recommendByEmoji = async (
 };
 
 export const PersonalizedRecommendation = async (): Promise<RecommendResponse> => {
-  const response = await fetch("/api/recommend/personalized", {
+  const response = await fetch(`${BASE_URL}/api/recommend/personalized`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
