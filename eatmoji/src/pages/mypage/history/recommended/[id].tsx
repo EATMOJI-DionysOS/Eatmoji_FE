@@ -44,9 +44,9 @@ export default function HistoryDetail() {
     if (!selectedItem) return;
     const query = `${selectedCity} ${selectedDistrict} ${selectedItem.recommendation.food}`;
     const encodedQuery = encodeURIComponent(query);
-    const url = `https://map.kakao.com/?=${encodedQuery}`;
+    const url = `https://map.kakao.com/?q=${encodedQuery}`;
 
-    window.open(url, '_black');
+    window.open(url, '_blank');
   }
 
   useEffect(() => {
