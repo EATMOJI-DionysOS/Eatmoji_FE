@@ -139,6 +139,15 @@ EATMOJI/
 
 </br>
 
+## 😊 Contributors
+
+* 고준섭 - sseobi16
+* 김진하 - jinha0907
+* 라희수 - Head-ddy
+* 이민규 - mingyulee327
+
+</br>
+
 ## 📚 유용한 링크
 
 * [🔗 GitHub Wiki 바로가기](https://github.com/EATMOJI-DionysOS/Eatmoji_FE/wiki)
