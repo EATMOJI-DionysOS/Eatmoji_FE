@@ -1,264 +1,161 @@
-# 🍽️ 오메추 (오늘 뭐 먹지?)
+# 🍽️ Eatmoji Frontend
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" height="32" />
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" height="32" />
-  <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" height="32" />
-  <img src="https://img.shields.io/badge/TanStack%20Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white" height="32" />
-  <img src="https://img.shields.io/badge/Zustand-444444?style=for-the-badge&logo=react&logoColor=white" height="32" />
-  <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" height="32" />
-  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" height="32" />
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" height="40"><img src="https://img.shields.io/badge/React-9333EA?style=for-the-badge&logo=react&logoColor=61DAFB" height="40"><img src="https://img.shields.io/badge/Vercel-C71585?style=for-the-badge&logo=vercel&logoColor=white" height="40">
 </div>
 
-<p align="center">
-  사용자 기본 상태와 취향을 바탕으로 <b>상황 맞춤 메뉴/맛집을 추천</b>하는 웹 서비스
-</p>
+> 감정을 이모지로 표현하고, 그 이모지에 어울리는 음식을 추천해주는 감성 기반 메뉴 추천 서비스 **Eatmoji**의 프론트엔드 레포지토리입니다.
 
-<p align="center">
-  <a href="https://omechu.log8.kr/">🐥 배포 URL</a> ·
-  데모 계정: <code>user@example.com / user1234!</code>
-</p>
+</br>
 
----
+## 📌 소개
 
-## 📌 개요
+Eatmoji는 감정 상황을 이모지로 선택하면, 이어 맞는 음식을 추천해주는 **감성 기반 메뉴 추천 서비스**입니다.
+추천 결과는 레시피로 직접 만들어보거나, 지역 기반 맛집 정보를 통해 먹으러 가는 두 가지 방식으로 이어집니다.
 
-**오메추**는 사용자의 기본 상태·취향·컨디션 같은 맥락을 반영해 **맞춤 메뉴와 근처 맛집을 빠르게 추천**합니다. 목표는 단순합니다. 고민 시간을 줄이고, 선택을 더 즐겁게 만들기.
+이 저장소는 Eatmoji 서비스의 **프론트엔드 클라이언트**로, 사용자와 상호작용하는 모든 화면을 담당합니다.
 
-### 문제 인식
+</br>
 
-* 반복되는 “오늘 뭐 먹지?”에서 오는 **의사결정 피로**
-* 광고/검색 중심 리스트로 인한 **정보 과잉**과 **개인 맥락 미반영**
-* **새로고침/이탈 시 상태 유실**, 느린 응답, 빈약한 폴백 등 UX 끊김
+## ⚙️ 주요 기능
 
-### 접근
+* 🔐 사용자 로그인/회원가입 및 토큰 기반 인증  
+* 😊 감정 이모지 선택을 통한 메뉴 추천  
+* 🍽️ 추천받은 음식의 레시피 및 주변 맛집 정보 확인  
+* 📍 Kakao Map 기반 지역 맛집 검색 기능  
+* ⭐ 추천 결과 좋아요 및 상세 페이지 기능  
+* 🔄 추천 기록 무한 스크롤 조회 기능  
+* 🧠 사용자 추천 기록 기반 오늘의 메뉴 자동 추천  
+* 🧬 사용자의 음식 취향, 맛 선호도, 기저질환 및 알레르기 정보를 반영한 개인화 추천 기능  
+* 🧱 사용자 경험을 고려한 반응형 UI
 
-1. **온보딩 5단계**로 최소 입력으로 핵심 신호 수집
-2. **컨텍스트 기반 탐색**: 태그·가격·정렬·검색(디바운스) + **무한 스크롤**
-3. **상세 페이지 실사용 시나리오**: 리뷰 정렬/필터, 신고, 이미지 폴백, 평점 요약
-4. **마이페이지**에서 상태/취향 재설정 → 추천 품질 순환 개선
+</br>
 
-> 현재 추천은 **규칙 기반 필터+정렬**로 안정 운영 중이며, 이후 **개인화 점수/가중치** 기반 모델로 고도화 예정.
+## 🚀 배포 링크
+🐸`https://eatmoji.vercel.app`
 
----
+</br>
 
-## 🧭 빠른 링크
-
-* [아키텍처](#-아키텍처)
-* [주요 기능](#-주요-기능)
-* [설치 및 실행](#-설치-및-실행)
-* [폴더 구조](#-폴더-구조)
-* [기술 스택](#-기술-스택)
-* [협업 규칙/커밋 컨벤션](#-협업-규칙)
-* [트러블슈팅](#-트러블슈팅--해결-과정)
-* [AI 활용](#-ai-활용-내역)
-* [로드맵](#-로드맵)
-
----
-
-## 🧩 아키텍처
-
-* **서버 상태**: TanStack Query로 캐싱/무효화/낙관적 업데이트/무한 스크롤 관리
-* **클라이언트 상태**: Zustand로 온보딩 진행/모달/뷰 로컬 상태 관리
-* **네트워크 계층 분리**: `axiosInstance`(인증) · `axiosPublicInstance`(공개 업로드)
-* **이미지 안정화**: 한글 파일명 **NFC 정규화**, 확장자 소문자, onError 폴백/재시도
-
-```mermaid
-flowchart LR
-  UI[Next.js App Router UI] -->|useQuery| RQ[React Query Cache]
-  RQ -->|Axios| API[(REST API)]
-  UI -->|Zustand| CS[Client State]
-  subgraph Client
-    UI
-    RQ
-    CS
-  end
-  subgraph Server
-    API
-  end
-```
-
----
-
-## ✨ 주요 기능
-
-### 1) 온보딩 5단계 + 진행도 바
-
-* **가치**: 최소 입력으로 맞춤 초기 추천 생성, 재방문 복원
-* **기술**: Zustand 상태/검증, 로컬 스냅샷, 서버 동기화
-* **테스트**: 새로고침/뒤로가기 안전, 모바일 키보드 UX
-
-### 2) 메뉴/맛집 추천 (검색·필터·정렬·무한 스크롤)
-
-* **가치**: 조건 변경에도 끊기지 않는 탐색 리듬
-* **기술**: `useInfiniteQuery`, 쿼리키/`staleTime`·`gcTime` 설계, 프리패칭
-* **테스트**: 필터 조합 캐시 무효화, 스크롤 경계, 실패 폴백
-
-### 3) 맛집 상세
-
-* **가치**: 사진·리뷰·평점을 한 화면에서 빠르게 판단
-* **기술**: 이미지 폴백/NFC 정규화, 접근성 alt, 딥링크 경로
-* **테스트**: 빈 상태/지연/실패 폴백, 모달 포커스 트랩
-
-### 4) 찜(Like) & 추천 목록
-
-* **가치**: 즉시 반응/롤백으로 일관 UX
-* **기술**: `useMutation` 낙관적 업데이트 + 오류 롤백, 쿼리 동기화
-* **테스트**: 연속 토글/401 만료/롤백 체크
-
-### 5) 마이페이지 (프로필/기본 상태/FoodieLog/활동)
-
-* **가치**: 지속 보정으로 개인화 품질 향상
-* **기술**: 보호 라우팅, 서버/클라 상태 분리 저장, 페이지네이션
-
-### 6) 인증 (3단계 가입·보호 라우팅)
-
-* **가치**: 명확한 가입 플로우, 보안 유지된 개인화
-* **기술**: JWT, 인터셉터 토큰 부착/에러 공통 처리, 라우트 가드
-
-### 7) 이미지 업로드 (공개/인증 분리·폴백)
-
-* **가치**: 실패 확률↓, 사용자 혼란 최소화
-* **기술**: `/v1/uploads/public` vs `/v1/uploads`, 파일명 정규화/소문자화, 썸네일 미리보기
-
----
-
-## 🛠 설치 및 실행
+## 🧑‍💻 설치 및 실행 방법
 
 ```bash
-# 1) 클론
-git clone <your-repo-url>
-cd omechu
+# 1. 레포지트리 클론해오기
+git clone https://github.com/EATMOJI-DionysOS/Eatmoji_FE.git
+cd Eatmoji_FE
 
-# 2) 패키지 설치
-yarn install
+# 2. 의존성 설치
+npm install
 
-# 3) 개발 서버
-yarn dev # http://localhost:3000
+# 3. 개발 서버 실행
+npm run dev
 
-# 4) 빌드/미리보기
-yarn build
-yarn start
+# 4. 빌드
+npm run build
+
+# 5. 환경 변수 (.env) 구성 예시
+NEXT_PUBLIC_API_URL=https://api.example.com
 ```
 
-### 🔐 환경 변수 예시 (`.env.local`)
+> 기본 포트는 `http://localhost:3000` 입니다.
 
-```env
-NEXT_PUBLIC_API_BASE_URL=https://api.example.com
-NEXT_PUBLIC_KAKAO_MAP_API_KEY=...
-NEXT_PUBLIC_GOOGLE_PLACE_API_KEY=...
-GOOGLE_MAP_SERVER_API_KEY=...
-```
-
-> 이미지 최적화를 위해 `sharp` 설치를 권장합니다: `pnpm add sharp`.
-
----
+</br>
 
 ## 📁 폴더 구조
 
-```text
-.
-├── (auth)             # 인증 전용 라우트 그룹(실제 URL 노출 없음)
-├── api/               # Next.js Route Handler: 서버 API 프록시/유틸(예: 지오코드)
-├── auth/              # 인증 관련 페이지 묶음(콜백, 재설정 등)
-├── components/        # 공용 UI 컴포넌트(모달/입력/스켈레톤/헤더 등)
-├── constant/          # 더미 데이터·상수·옵션
-├── fullmenu/          # 전체 메뉴 탐색(필터/검색/리스트)
-├── lib/               # API 인스턴스, 공용 훅, 프로바이더, 상태 스토어, 타입
-├── mainpage/          # 질문 기반 추천 플로우(예산/목적/무드 등)
-├── mypage/            # 프로필/기본 상태/먹부림 기록/설정
-├── onboarding/        # 5단계 온보딩 UI/훅
-├── restaurant/        # 맛집 리스트·상세·지도(카카오 지도 포함)
-├── globals.css        # 전역 스타일
-├── layout.tsx         # 루트 레이아웃(App Router)
-├── ClientLayout.tsx   # 클라이언트 전용 레이아웃
-└── page.tsx           # 루트 페이지 엔트리
+```
+EATMOJI/
+├── .next/                                # Next.js 빌드 결과물 (자동 생성)
+├── node_modules/                         # 설치된 패키지들 (자동 생성)
+├── public/                               # 정적 파일 (이미지, favicon 등)
+├── src/                                  # 소스 코드 폴더
+│   ├── components/                       # 재사용 가능한 UI 컴포넌트 모음
+│   │   ├── main-steps/                   # 메인 페이지 단계별 컴포넌트
+│   │   ├── mypage-steps/                 # 마이페이지 단계별 컴포넌트
+│   │   ├── global-layout.module.css      # 글로벌 레이아웃 스타일
+│   │   └── global-layout.tsx             # 글로벌 레이아웃 컴포넌트
+│   ├── data/                             # 정적 데이터 파일
+│   ├── lib/                              # API 호출 및 유틸리티 함수
+│   │   └── api/
+│   ├── mock/                             # API 목(mock) 데이터
+│   ├── pages/                            # Next.js 페이지(라우팅)
+│   │   ├── login/                        # 로그인 페이지
+│   │   ├── main/                         # 메인 페이지
+│   │   ├── mypage/                       # 마이페이지
+│   │   │   ├── history/                  # 마이페이지 내 추천 기록 페이지
+│   │   │   └── profile/                  # 마이페이지 내 프로필 페이지
+│   │   ├── signup/                       # 회원가입 페이지
+│   │   ├── todaymenu/                    # 오늘의 메뉴 관련 페이지
+│   │   │   └── recommend/                # 메뉴 추천 페이지
+│   │   ├── _app.tsx                      # Next.js 커스텀 App 컴포넌트
+│   │   ├── _document.tsx                 # Next.js 커스텀 Document 컴포넌트
+│   │   ├── auth-required.module.css      # 인증 필요 페이지 스타일
+│   │   ├── auth-required.tsx             # 인증 필요 페이지 컴포넌트
+│   │   ├── index.module.css              # 루트 페이지 스타일
+│   │   └── index.tsx                     # 루트 페이지 컴포넌트
+│   ├── store/                            # 전역 상태 관리(Zustand 등)
+│   ├── styles/                           # 전역 및 공용 스타일
+│   │   ├── globals.css                   # 전체 프로젝트에 적용되는 글로벌 스타일
+│   │   └── shared.module.css             # 여러 컴포넌트에서 공유되는 스타일
+│   └── types/                            # 타입 정의(TypeScript)
+├── .env                                  # 환경 변수 설정 파일
+├── .gitignore                            # Git 무시 파일 목록
+├── build.sh                              # 프로젝트 빌드 스크립트
+├── eslint.config.mjs                     # ESLint 설정
+├── next-env.d.ts                         # Next.js 타입 지원 파일
+├── package.json                          # 프로젝트 메타정보 및 스크립트
+├── package-lock.json                     # 의존성 고정 파일
+├── tsconfig.json                         # TypeScript 설정
+└── README.md                             # 프로젝트 문서
+
 ```
 
-> 원칙: **Server State=React Query**, **Client State=Zustand**, **공용 로직=lib**, **공용 UI=components**.
+</br>
 
----
+## 🛠️ 기술 스택
 
-## 🧰 기술 스택
+### ✔️Front-end
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" /><img src="https://img.shields.io/badge/React-9333EA?style=for-the-badge&logo=react&logoColor=61DAFB" /><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" /><img src="https://img.shields.io/badge/Zustand-708090?style=for-the-badge&logo=Zustand&logoColor=white" /><img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" /><img src="https://img.shields.io/badge/SWR-F59E0B?style=for-the-badge&logo=vercel&logoColor=white" />
 
-**Core** <img src="https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white" /> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" /> <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat&logo=tailwindcss&logoColor=white" />
+### ✔️Styling & UI
 
-**State** <img src="https://img.shields.io/badge/TanStack%20Query-FF4154?style=flat&logo=reactquery&logoColor=white" /> <img src="https://img.shields.io/badge/Zustand-444444?style=flat" />
+  <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white" /><img src="https://img.shields.io/badge/PostCSS-DD3A0A?style=for-the-badge&logo=postcss&logoColor=white" /><img src="https://img.shields.io/badge/React Icons-E91E63?style=for-the-badge&logo=react&logoColor=white" />
 
-**Network** <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white" />
+### ✔️Development & Deployment Environment
+  <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" /><img src="https://img.shields.io/badge/Vercel-C71585?style=for-the-badge&logo=vercel&logoColor=white" />
 
-**Tooling/Deploy** <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat&logo=eslint&logoColor=white" /> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat&logo=prettier&logoColor=black" /> <img src="https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white" />
+</br>
 
----
+## 🤝 가이드
 
-## 🤝 협업 규칙
+* Pull Request 전에는 반드시 [CONTRIBUTING.md](https://github.com/EATMOJI-DionysOS/Eatmoji_BE/blob/develop/CONTRIBUTING.MD)를 확인해주세요.
+* 커밋 메시지는 [Conventional Commits](https://www.conventionalcommits.org/) 형식을 권장합니다.
+* 브랜치 전략 및 PR 리뷰 프로세스는 Wiki에 설명되어 있습니다.
 
-태그 기반 커밋 컨벤션을 사용합니다.
+</br>
 
-| 태그         | 설명             |
-| ---------- | -------------- |
-| `feat`     | 새로운 기능 추가      |
-| `fix`      | 버그 수정          |
-| `docs`     | 문서 수정          |
-| `style`    | 코드 스타일 변경      |
-| `design`   | UI 디자인 변경      |
-| `test`     | 테스트 작성/수정      |
-| `refactor` | 리팩토링(기능 변화 없음) |
-| `build`    | 빌드 설정 수정       |
-| `ci`       | CI 설정 변경       |
-| `perf`     | 성능 개선          |
-| `chore`    | 설정/패키지 등 기타    |
-| `rename`   | 파일/폴더명 변경      |
-| `remove`   | 파일/리소스 삭제      |
-| `wip`      | 진행 중 임시 커밋     |
-| `hotfix`   | 운영 긴급 수정       |
+## 📄 라이선스
 
-**작성 규칙 예시**
+본 프로젝트는 [MIT License](LICENSE)에 따라 오픈소스로 공개되어 있습니다.
 
-```bash
-feat: 감정 선택 페이지 레이아웃 구현 #12
-fix: 로그인 실패 시 에러 메시지 출력 오류 수정 #7
-```
+</br>
 
----
+## 😊 Contributors
 
-## 🧯 트러블슈팅 & 해결 과정
+* 고준섭 - sseobi16
+* 김진하 - jinha0907
+* 라희수 - Head-ddy
+* 이민규 - mingyulee327
 
-* **검색 직후 자동 재검색**: `submittedTerm` vs `inputValue` 분리, 초기화 직후 입력 무시 가드
-* **이미지 한글 파일명(NFC/NFD)**: 업로드 **NFC 정규화**, 확장자 소문자, onError 재시도/폴백
-* **공개/인증 업로드 분리**: `axiosPublicInstance` + `/v1/uploads/public` 도입으로 401 이슈 해소
-* **동적 라우팅 타입 오류**: 일부 페이지 **Client Component** 전환 + `useParams()` 사용
-* **react-datepicker 검증**: 제어형 props로 강제, setState 직전 가드
-* **찜 토글 지연**: `onMutate/onError/onSettled` 낙관적 업데이트 + 롤백
+</br>
 
-> 상세 로그/스크린샷은 별도 문서(노션) 참고.
+## 📚 유용한 링크
 
----
+* [🔗 GitHub Wiki 바로가기](https://github.com/EATMOJI-DionysOS/Eatmoji_FE/wiki)
+* [📦 Backend Repository](https://github.com/EATMOJI-DionysOS/Eatmoji_BE)
 
-## 🧠 AI 활용 내역
+</br>
+</br>
 
-* **Gemini 기반 코드 리뷰**: 컴포넌트 경계, prop 드릴링, 쿼리키/에러 패턴 점검 및 리팩터링 아이디어 도출
-
----
-
-## 🗺 로드맵
-
-* [ ] 개인화 점수/가중치 기반 추천 엔진 고도화
-* [ ] 리뷰 품질 신뢰도(가중치) 반영 정렬
-* [ ] 이미지 업로드 파이프라인 리트라이/썸네일 워커
-* [ ] i18n(한/영) 및 접근성 감사(a11y)
-* [ ] 성능 모니터링(LCP/CLS/INP) 대시보드
-
----
-
-## 🙌 기여자
-
-* [@theSnackOverflow](https://github.com/theSnackOverflow) - theSnackOverflow 2ssac
-* [@Head-ddy](https://github.com/Head-ddy) - Head-ddy 라희수
-* [@IISweetHeartII](https://github.com/IISweetHeartII) - IISweetHeartII 김덕환
-* [@jeonbinggu](https://github.com/jeonbinggu) - jeonbinggu Jeonbyeongguk
-
----
-
-> Made with ❤️
-> © 2025 OMECHU Team
+> Made with ❤️ by Team DionysOS – 2025  
+> This project was created as part of the **Open Source Software Project** course.
+> 
