@@ -251,22 +251,12 @@ fix: 로그인 실패 시 에러 메시지 출력 오류 수정 #7
 
 ---
 
-## 📸 스크린샷 (예시)
+## 🙌 기여자
 
-> 서비스 주요 화면 캡처를 여기에 첨부해주세요.
-
----
-
-## 📄 라이선스
-
-본 프로젝트는 MIT License로 배포될 수 있습니다. (원하시는 라이선스를 `LICENSE` 파일로 추가하세요.)
-
----
-
-## 🙌 기여
-
-* PR 전에 이 문서의 **협업 규칙**을 읽고, 브랜치/리뷰 프로세스를 따라 주세요.
-* 이슈 템플릿을 사용해 재현 절차/기대 동작을 명확히 남겨 주세요.
+* [@theSnackOverflow](https://github.com/theSnackOverflow) - theSnackOverflow 2ssac
+* [@Head-ddy](https://github.com/Head-ddy) - Head-ddy 라희수
+* [@IISweetHeartII](https://github.com/IISweetHeartII) - IISweetHeartII 김덕환
+* [@jeonbinggu](https://github.com/jeonbinggu) - jeonbinggu Jeonbyeongguk
 
 ---
 
